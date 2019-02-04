@@ -1,7 +1,7 @@
 console.log("Games js loaded");
 
-//const gamesPromise = fetch("http://localhost:8080/api/games");
-const gamesPromise = axios.get("http://localhost:8080/api/games");
+//const gamesPromise = fetch("/api/games");
+const gamesPromise = axios.get("/api/games");
 
 gamesPromise
     //.then(x => x.json()) // this is necessary when using fetch
