@@ -6,7 +6,6 @@
  */
 const App = (props) => (
     <div>
-        <Title text="Hello React" />
-        <p>A simple React example</p>
+        <GamesList title="Game list" />
     </div>
 );
