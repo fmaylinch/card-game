@@ -6,17 +6,17 @@ import tech.bts.cardgame.model.Card;
 import tech.bts.cardgame.model.Deck;
 import tech.bts.cardgame.model.Game;
 import tech.bts.cardgame.model.GameUser;
-import tech.bts.cardgame.repository.GameRepository;
+import tech.bts.cardgame.repository.GameRepositoryJdbc;
 
 import java.util.Collection;
 
 @Service
 public class GameService {
 
-    private GameRepository gameRepo;
+    private GameRepositoryJdbc gameRepo;
 
     @Autowired
-    public GameService(GameRepository gameRepo) {
+    public GameService(GameRepositoryJdbc gameRepo) {
         this.gameRepo = gameRepo;
     }
 

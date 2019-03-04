@@ -15,6 +15,9 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
+    /*
+       We're now using a database so we don't need to create dummy data.
+
     @Bean
     public CommandLineRunner createDummyData(GameService gameService) {
 
@@ -29,4 +32,5 @@ public class Application {
             gameService.joinGame(new GameUser(game2.getId(), "homer"));
         };
     }
+    */
 }

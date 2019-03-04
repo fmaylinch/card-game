@@ -2,13 +2,14 @@ package tech.bts.cardgame.repository;
 
 import org.springframework.stereotype.Repository;
 import tech.bts.cardgame.model.Game;
-import tech.bts.cardgame.model.User;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
+/**
+ * Stores games in memory (in a Map)
+ */
 @Repository
 public class GameRepository {
 
