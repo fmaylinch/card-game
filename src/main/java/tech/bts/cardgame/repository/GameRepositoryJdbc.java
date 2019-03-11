@@ -23,7 +23,24 @@ public class GameRepositoryJdbc {
     }
 
     public void create(Game game) {
-        throw new RuntimeException("Not implemented yet"); // TODO: insert game into database
+
+        try {
+            Connection connection = dataSource.getConnection();
+            Statement statement = connection.createStatement();
+
+            String sql = "insert into games (state, players)" +
+                    " values ('" + game.getState() + "', NULL)";
+
+            System.out.println("SQL: " + sql);
+
+            statement.executeUpdate(sql);
+
+            statement.close();
+            connection.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public Game getById(long id) {
