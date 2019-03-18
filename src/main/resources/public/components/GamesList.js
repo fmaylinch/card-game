@@ -15,7 +15,12 @@ class GamesList extends React.Component {
 
     fetchAndDisplayGames() {
 
-        axios.get("/api/games")
+        // TODO: This search options will come from a filter on the web page
+        let gameSearch = {
+            state: 'OPEN'
+        };
+
+        axios.post("/api/games/find", gameSearch)
             .then(response => {
 
                 const games = response.data;

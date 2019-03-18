@@ -2,10 +2,7 @@ package tech.bts.cardgame.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tech.bts.cardgame.model.Card;
-import tech.bts.cardgame.model.Deck;
-import tech.bts.cardgame.model.Game;
-import tech.bts.cardgame.model.GameUser;
+import tech.bts.cardgame.model.*;
 import tech.bts.cardgame.repository.GameRepositoryJdbc;
 
 import java.util.Collection;
@@ -52,5 +49,10 @@ public class GameService {
     public Game getGameById(long id) {
 
         return gameRepo.getById(id);
+    }
+
+    public Collection<Game> find(GameSearch gameSearch) {
+
+        return gameRepo.find(gameSearch);
     }
 }

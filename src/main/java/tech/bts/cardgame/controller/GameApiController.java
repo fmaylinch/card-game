@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import tech.bts.cardgame.controller.errors.GameNotExistsException;
 import tech.bts.cardgame.model.Card;
 import tech.bts.cardgame.model.Game;
+import tech.bts.cardgame.model.GameSearch;
 import tech.bts.cardgame.model.GameUser;
 import tech.bts.cardgame.service.GameService;
 
@@ -34,6 +35,12 @@ public class GameApiController {
     public Collection<Game> getAllGames() {
 
         return gameService.getAllGames();
+    }
+
+    @RequestMapping(method = POST, path = "find")
+    public Collection<Game> findGames(@RequestBody GameSearch gameSearch) {
+
+        return gameService.find(gameSearch);
     }
 
     @RequestMapping(method = GET, path = "/{gameId}")

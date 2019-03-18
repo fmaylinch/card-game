@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import tech.bts.cardgame.model.Game;
+import tech.bts.cardgame.model.GameSearch;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
@@ -88,5 +89,20 @@ public class GameRepositoryJdbc {
         // The join() method already updates the game state so we don't need to update it
 
         return game;
+    }
+
+    public Collection<Game> find(GameSearch gameSearch) {
+
+        String sql = "select * from games";
+
+        // TODO: we have to improve this
+        //       because we don't want to put all conditions always
+        //       and sometimes we don't want to add conditions at all (so there would be no 'where')
+
+        sql += " where state = '" + gameSearch.state + "'";
+
+        // sql += " and players like '%" + gameSearch.playerName + "%'";
+
+        return jdbcTemplate.query(sql, (rs1, rowNum) -> getGame(rs1));
     }
 }
