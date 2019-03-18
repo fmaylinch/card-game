@@ -9,7 +9,14 @@ public class Util {
 
         String result = "";
 
-        // TODO
+        for (String text : texts) {
+
+            if (!result.isEmpty()) {
+                result += separator;
+            }
+
+            result += text;
+        }
 
         return result;
     }

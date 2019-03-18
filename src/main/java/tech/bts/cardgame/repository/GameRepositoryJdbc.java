@@ -1,5 +1,6 @@
 package tech.bts.cardgame.repository;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import tech.bts.cardgame.model.Game;
@@ -28,6 +29,32 @@ public class GameRepositoryJdbc {
                 " values ('" + game.getState() + "', NULL)");
     }
 
+    public void update(Game game) {
+
+        String names = null;
+
+        if (game.getPlayerNames() != null && !game.getPlayerNames().isEmpty()) {
+            names = "'" + StringUtils.join(game.getPlayerNames(), ",") + "'";
+        }
+
+        String sql = "update games set " +
+                "state = '" + game.getState() + "', " +
+                "players = " + names + " " +
+                "where id = " + game.getId();
+
+        //System.out.println("SQL: " + sql);
+        jdbcTemplate.update(sql);
+    }
+
+    public void createOrUpdate(Game game) {
+
+        if (game.getId() != null) {
+            update(game);
+        } else {
+            create(game);
+        }
+    }
+
     public Game getById(long id) {
 
         return jdbcTemplate.queryForObject(
@@ -44,7 +71,7 @@ public class GameRepositoryJdbc {
 
     private Game getGame(ResultSet rs) throws SQLException {
 
-        int id = rs.getInt("id");
+        long id = rs.getLong("id");
         String players = rs.getString("players");
 
         Game game = new Game(null);

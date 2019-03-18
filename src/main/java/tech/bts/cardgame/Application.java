@@ -4,8 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import tech.bts.cardgame.model.Game;
-import tech.bts.cardgame.model.GameUser;
+import tech.bts.cardgame.repository.GameRepositoryJdbc;
 import tech.bts.cardgame.service.GameService;
 
 @SpringBootApplication
@@ -15,22 +14,19 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    /*
-       We're now using a database so we don't need to create dummy data.
-
+    /**
+     * This will be executed when we start the application.
+     * We can try things here.
+     */
     @Bean
-    public CommandLineRunner createDummyData(GameService gameService) {
+    public CommandLineRunner test(
+            GameService gameService,
+            GameRepositoryJdbc gameRepository) {
 
         return args -> {
 
-            Game game1 = gameService.createGame();
-            Game game2 = gameService.createGame();
-            Game game3 = gameService.createGame();
-
-            gameService.joinGame(new GameUser(game1.getId(), "bart"));
-            gameService.joinGame(new GameUser(game1.getId(), "lisa"));
-            gameService.joinGame(new GameUser(game2.getId(), "homer"));
+            //Game game = gameService.getGameById(1);
+            //gameRepository.update(game);
         };
     }
-    */
 }
