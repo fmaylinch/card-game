@@ -3,17 +3,17 @@ package tech.bts.cardgame.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tech.bts.cardgame.model.*;
-import tech.bts.cardgame.repository.GameRepositoryJdbc;
+import tech.bts.cardgame.repository.GameRepository;
 
 import java.util.Collection;
 
 @Service
 public class GameService {
 
-    private GameRepositoryJdbc gameRepo;
+    private GameRepository gameRepo;
 
     @Autowired
-    public GameService(GameRepositoryJdbc gameRepo) {
+    public GameService(GameRepository gameRepo) {
         this.gameRepo = gameRepo;
     }
 

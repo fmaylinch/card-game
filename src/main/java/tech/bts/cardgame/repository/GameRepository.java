@@ -1,38 +1,19 @@
 package tech.bts.cardgame.repository;
 
-import org.springframework.stereotype.Repository;
 import tech.bts.cardgame.model.Game;
+import tech.bts.cardgame.model.GameSearch;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
-/**
- * Stores games in memory (in a Map)
- */
-@Repository
-public class GameRepository {
+public interface GameRepository {
 
-    private Map<Long, Game> gameMap;
-    private long nextId;
+    void create(Game game);
 
-    public GameRepository() {
-        gameMap = new HashMap<>();
-        nextId = 0;
-    }
+    void update(Game game);
 
-    public void create(Game game) {
-        game.setId(nextId);
-        gameMap.put(nextId, game);
-        nextId++;
-    }
+    Game getById(long id);
 
-    public Game getById(long id) {
-        return gameMap.get(id);
-    }
+    Collection<Game> getAll();
 
-    public Collection<Game> getAll() {
-
-        return gameMap.values();
-    }
+    Collection<Game> find(GameSearch gameSearch);
 }

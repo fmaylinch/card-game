@@ -14,8 +14,7 @@ import java.util.*;
 /**
  * Stores games in a database
  */
-@Repository
-public class GameRepositoryJdbc {
+public class GameRepositoryJdbc implements GameRepository {
 
     private JdbcTemplate jdbcTemplate;
 

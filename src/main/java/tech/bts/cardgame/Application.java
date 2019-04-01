@@ -4,6 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import tech.bts.cardgame.repository.GameRepository;
 import tech.bts.cardgame.repository.GameRepositoryJdbc;
 import tech.bts.cardgame.service.GameService;
 
@@ -21,12 +22,11 @@ public class Application {
     @Bean
     public CommandLineRunner test(
             GameService gameService,
-            GameRepositoryJdbc gameRepository) {
+            GameRepository gameRepository) {
 
         return args -> {
 
-            //Game game = gameService.getGameById(1);
-            //gameRepository.update(game);
+            // gameService.createGame();
         };
     }
 }
